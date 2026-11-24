@@ -17,11 +17,8 @@ class TaskController extends Controller
     {
         $validated = $this->formData($request);
 
-        Task::create($validated);
-        return response()->json([
-            'success' => true,
-            'message' => 'Task Stored Successfully!'
-        ], 201);
+        $task = Task::create($validated);
+        return response()->json($task, 201);
     }
 
     public function show(string $id)
@@ -36,11 +33,7 @@ class TaskController extends Controller
         $validated = $this->formData($request);
         $task->update($validated);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Task Updated Successfully!',
-            'data' => $task
-        ]);
+        return response()->json($task);
     }
 
     public function destroy(string $id)
