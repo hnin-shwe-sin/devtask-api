@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->enum('status', [0, 1])->comment('0 => draft, 1 => active')->default(1);
             $table->timestamps();
         });
     }

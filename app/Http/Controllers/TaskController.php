@@ -51,7 +51,8 @@ class TaskController extends Controller
     {
         $validatedFormData = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'status' => 'nullable|in:0,1'
         ]);
 
         return $validatedFormData;
